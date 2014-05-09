@@ -2,7 +2,7 @@
   'use strict';
   angular.module('confirmClick', []);
 
-  angular.module('confirmClick').directive('confirmClick', function($timeout) {
+  angular.module('confirmClick').directive('confirmClick', ['$timeout', function($timeout) {
     return {
       scope: {},
       link: function(scope, element, attrs) {
@@ -53,6 +53,6 @@
         });
       }
     };
-  });
+  }]);
 
 }).call(this);
