@@ -19,16 +19,16 @@ describe 'Directive: confirmClick', ->
     # digest the scope, process the initial confirmationAction
     scope.$digest()
 
-  xit 'should transition all styles', ->
+  it 'should transition all styles', ->
     expect(element.css('transition')).toBe 'all 1s'
 
-  xit 'should display the text provided', ->
+  it 'should display the text provided', ->
     expect(element.text()).toBe 'Delete'
 
   it 'should set the max width of the element to the current width', ->
     expect(element.css('maxWidth')).toBe '0px' # element[0].offsetWidth = 0
 
-  xdescribe 'when the user clicks the button', ->
+  describe 'when the user clicks the button', ->
     beforeEach ->
       element.triggerHandler 'click'
 
