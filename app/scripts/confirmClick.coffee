@@ -12,7 +12,7 @@ angular.module('confirmClick')
       # Original Width
       textWidth = null
 
-      # Timeout 
+      # Timeout
       promise = null
 
       # Already confirmed?
@@ -23,7 +23,7 @@ angular.module('confirmClick')
 
       # Animate
       element.css
-        transition: 'all 1s'
+        transition: 'max-width 1s'
 
       # Toggle text based on current state
       scope.$watch 'confirmingAction', (newVal, oldVal) ->
@@ -61,7 +61,7 @@ angular.module('confirmClick')
 
           # User has confirmed
           hasConfirmed = true
-          
+
           # Ensure the confirm action text remains
           $timeout.cancel promise
 

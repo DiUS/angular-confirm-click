@@ -19,8 +19,8 @@ describe 'Directive: confirmClick', ->
     # digest the scope, process the initial confirmationAction
     scope.$digest()
 
-  it 'should transition all styles', ->
-    expect(element.css('transition')).toBe 'all 1s'
+  it 'should transition only max-width style', ->
+    expect(element.css('transition')).toBe 'max-width 1s'
 
   it 'should display the text provided', ->
     expect(element.text()).toBe 'Delete'
