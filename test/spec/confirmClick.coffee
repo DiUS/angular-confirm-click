@@ -38,6 +38,9 @@ describe 'Directive: confirmClick', ->
     it 'should have a max width larger than the text', ->
       expect(element.css('maxWidth')).toBe '300px'
 
+    it 'should acknowledge the button is in the state of confirming', ->
+      expect(element.hasClass('confirming')).toBe true
+
     describe 'if the user does not click the button again', ->
       beforeEach ->
         $timeout.flush()
@@ -48,6 +51,9 @@ describe 'Directive: confirmClick', ->
       it 'should set the max width back to the original width', ->
         expect(element.css('maxWidth')).toBe '0px' # element[0].offsetWidth = 0
 
+      it 'should acknoledge the button is not in the state of confirming', ->
+        expect(element.hasClass('confirming')).toBe false
+
     describe 'if the user clicks the button again', ->
       beforeEach ->
         element.triggerHandler 'click'
@@ -57,6 +63,9 @@ describe 'Directive: confirmClick', ->
 
       it 'should set the opacity on the button to indicate the click happened', ->
         expect(element.css('opacity')).toBe '0.5'
+
+      it 'should acknowledge the button is not in the state of confirming', ->
+        expect(element.hasClass('confirming')).toBe false
 
       it 'should trigger the confirm click action', ->
         expect(scope.confirmed).toHaveBeenCalled()

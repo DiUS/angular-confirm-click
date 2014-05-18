@@ -36,10 +36,16 @@ angular.module('confirmClick')
           # Show confirm message
           element.text attrs.confirmMessage
           element.css  maxWidth: '300px'
+
+          # Acknowledge in confirming state
+          element.addClass 'confirming'
         else
           # Show original message
           element.text actionText
           element.css  maxWidth: textWidth
+
+          # Acknowledge not in confirming state anymore
+          element.removeClass 'confirming'
 
       # handle click on button
       element.bind 'click', ->
@@ -67,6 +73,9 @@ angular.module('confirmClick')
 
           # Indicate click occured
           element.css opacity: '0.5'
+
+          # Acknowledge not in confirming state anymore
+          element.removeClass 'confirming'
 
           # Trigger action
           scope.$parent.$apply attrs.confirmClick
