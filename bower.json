@@ -1,10 +1,10 @@
 {
   "name": "angular-confirm-click",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/confirmClick.js",
   "ignore": [
     "**/.*",
-    "app", 
+    "app",
     "test"
   ],
   "dependencies": {

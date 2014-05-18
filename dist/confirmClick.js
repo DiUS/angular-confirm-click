@@ -13,17 +13,19 @@
           promise = null;
           hasConfirmed = false;
           scope.confirmingAction = false;
-          element.css({ transition: 'all 1s' });
+          element.css({ transition: 'max-width 1s' });
           scope.$watch('confirmingAction', function (newVal, oldVal) {
             if (newVal === oldVal && oldVal === false) {
               textWidth = element[0].offsetWidth;
             }
             if (scope.confirmingAction) {
               element.text(attrs.confirmMessage);
-              return element.css({ maxWidth: '300px' });
+              element.css({ maxWidth: '300px' });
+              return element.addClass('confirming');
             } else {
               element.text(actionText);
-              return element.css({ maxWidth: textWidth });
+              element.css({ maxWidth: textWidth });
+              return element.removeClass('confirming');
             }
           });
           return element.bind('click', function () {
@@ -41,6 +43,7 @@
               hasConfirmed = true;
               $timeout.cancel(promise);
               element.css({ opacity: '0.5' });
+              element.removeClass('confirming');
               return scope.$parent.$apply(attrs.confirmClick);
             }
           });
