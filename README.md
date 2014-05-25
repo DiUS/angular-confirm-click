@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/DiUS/angular-confirm-click.svg?branch=master)](https://travis-ci.org/DiUS/angular-confirm-click)
+
 angular-confirm-click
 =====================
 
