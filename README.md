@@ -44,4 +44,4 @@ angular.element('button').text() === 'Are you sure?';
 
 When the user clicks again, the action `delete(item);` will be performed
 
-If the user does not confirm, the text reverts back to `Delete` after 1500ms
+If the user does not confirm, the text reverts back to `Delete` after 1500ms 
