@@ -3,7 +3,7 @@
 angular.module 'confirmClick', []
 
 angular.module('confirmClick')
-  .directive 'confirmClick', ($timeout) ->
+  .directive 'confirmClick', ($timeout, $document) ->
     scope: {}
     link: (scope, element, attrs) ->
       # Original text
@@ -29,8 +29,24 @@ angular.module('confirmClick')
       scope.$watch 'confirmingAction', (newVal, oldVal) ->
         # First time?
         if newVal == oldVal == false
+          # Clone the element and push it off screenn
+          clone = element.clone()
+          clone.css
+            left: '-9999px'
+            position: 'absolute'
+
+          # Append to the DOM so it can be measured
+          body = $document[0].body
+          body.appendChild clone[0]
+
           # Set the original width of the text
-          textWidth = element[0].offsetWidth
+          textWidth = clone[0].offsetWidth
+
+          # Ensure measurement in pixels
+          textWidth = textWidth + 'px'
+
+          # Remove from the DOM to cleanup
+          body.removeChild clone[0]
 
         if scope.confirmingAction
           # Show confirm message

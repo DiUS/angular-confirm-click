@@ -26,7 +26,11 @@ describe 'Directive: confirmClick', ->
     expect(element.text()).toBe 'Delete'
 
   it 'should set the max width of the element to the current width', ->
-    expect(element.css('maxWidth')).toBe '0px' # element[0].offsetWidth = 0
+    expect(element.css('maxWidth')).toBe '47px'
+
+  it 'should not be attached to the DOM', inject ($document) ->
+    body = angular.element($document[0]).find 'body'
+    expect(body.find('button').length).toBe 0
 
   describe 'when the user clicks the button', ->
     beforeEach ->
@@ -49,7 +53,7 @@ describe 'Directive: confirmClick', ->
         expect(element.text()).toBe 'Delete'
 
       it 'should set the max width back to the original width', ->
-        expect(element.css('maxWidth')).toBe '0px' # element[0].offsetWidth = 0
+        expect(element.css('maxWidth')).toBe '47px'
 
       it 'should acknoledge the button is not in the state of confirming', ->
         expect(element.hasClass('confirming')).toBe false

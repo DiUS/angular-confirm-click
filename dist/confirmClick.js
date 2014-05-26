@@ -3,7 +3,8 @@
   angular.module('confirmClick', []);
   angular.module('confirmClick').directive('confirmClick', [
     '$timeout',
-    function ($timeout) {
+    '$document',
+    function ($timeout, $document) {
       return {
         scope: {},
         link: function (scope, element, attrs) {
@@ -15,8 +16,18 @@
           scope.confirmingAction = false;
           element.css({ transition: 'max-width 1s' });
           scope.$watch('confirmingAction', function (newVal, oldVal) {
+            var body, clone;
             if (newVal === oldVal && oldVal === false) {
-              textWidth = element[0].offsetWidth;
+              clone = element.clone();
+              clone.css({
+                left: '-9999px',
+                position: 'absolute'
+              });
+              body = $document[0].body;
+              body.appendChild(clone[0]);
+              textWidth = clone[0].offsetWidth;
+              textWidth = textWidth + 'px';
+              body.removeChild(clone[0]);
             }
             if (scope.confirmingAction) {
               element.text(attrs.confirmMessage);
