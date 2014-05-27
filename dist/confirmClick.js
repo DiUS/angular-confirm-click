@@ -16,11 +16,9 @@
           element.css({ transition: 'max-width 1s' });
           scope.$watch('confirmingAction', function (newVal, oldVal) {
             if (newVal === oldVal && oldVal === false) {
-              return
+              return;
             }
-            
-            textWidth = textWidth || element[0].offsetWidth;
-
+            textWidth = textWidth || element[0].offsetWidth;
             if (scope.confirmingAction) {
               element.text(attrs.confirmMessage);
               element.css({ maxWidth: '300px' });

@@ -29,8 +29,10 @@ angular.module('confirmClick')
       scope.$watch 'confirmingAction', (newVal, oldVal) ->
         # First time?
         if newVal == oldVal == false
-          # Set the original width of the text
-          textWidth = element[0].offsetWidth
+          return
+
+        # Set the original width of the text on first click
+        textWidth = textWidth || element[0].offsetWidth
 
         if scope.confirmingAction
           # Show confirm message
