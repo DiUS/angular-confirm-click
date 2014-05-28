@@ -1,6 +1,5 @@
 {
   "name": "angular-confirm-click",
-  "version": "0.0.3",
   "version": "0.0.4",
   "main": "dist/confirmClick.js",
   "ignore": [
